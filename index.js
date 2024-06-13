@@ -4,12 +4,14 @@ const createAllProducts = require("./src/dbControllers/index");
 
 // Syncing all the models at once.
 
+const PORT = process.env.PORT || 3001;
+
 async function main() {
   try {
     conn.sync({ force: true }).then(async () => {
       await createAllProducts();
-      server.listen(process.env.PORT || 3001, async () => {
-        console.log("%s listening at 3001"); // eslint-disable-line no-console
+      server.listen(PORT, async () => {
+        console.log(`Server running on port ${PORT}`); // eslint-disable-line no-console
       });
     });
   } catch (error) {
