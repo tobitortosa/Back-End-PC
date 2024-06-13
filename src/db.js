@@ -1,19 +1,26 @@
 require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
+const { DB_CONNECTION_URL, DB_USER } = process.env;
 
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('postgres://' + DB_USER + ":" +  DB_PASSWORD + "@" + DB_HOST + ":5432/" + DB_NAME, {
-host: DB_HOST,
-dialect: DB_USER,
-logging: false,
-pool: {
-    min: 0,
-    max: 5,
-    idle: 1000
-     }
+// const sequelize = new Sequelize('postgres://' + DB_USER + ":" +  DB_PASSWORD + "@" + DB_HOST + ":5432/" + DB_NAME, {
+// host: DB_HOST,
+// dialect: DB_USER,
+// logging: false,
+// pool: {
+//     min: 0,
+//     max: 5,
+//     idle: 1000
+// }
+// });
+
+console.log(DB_CONNECTION_URL)
+
+const sequelize = new Sequelize(DB_CONNECTION_URL, {
+  dialect: DB_USER,
+  logging: false
 });
 
 const basename = path.basename(__filename);
