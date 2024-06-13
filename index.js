@@ -6,10 +6,10 @@ const createAllProducts = require("./src/dbControllers/index");
 
 const PORT = process.env.PORT || 3001;
 
-async function main() {
+function main() {
   try {
-    conn.sync({ force: true }).then(async () => {
-      await createAllProducts();
+    conn.sync({ force: true }).then( () => {
+      createAllProducts();
       server.listen(PORT, "0.0.0.0", () => {
         console.log(`Server running on port ${PORT}`); // eslint-disable-line no-console
       });
