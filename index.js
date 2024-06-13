@@ -10,7 +10,7 @@ async function main() {
   try {
     conn.sync({ force: true }).then(async () => {
       await createAllProducts();
-      server.listen(PORT, async () => {
+      server.listen(PORT, "0.0.0.0", () => {
         console.log(`Server running on port ${PORT}`); // eslint-disable-line no-console
       });
     });
