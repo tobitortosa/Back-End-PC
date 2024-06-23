@@ -8,7 +8,6 @@ const routes = require("./routes/index.js");
 require("./db.js");
 
 const server = express();
-server.use(cors());
 
 server.name = "API";
 
@@ -24,7 +23,7 @@ server.use(morgan("dev"));
 //   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
 //   next();
 // });
-
+server.use(cors());
 server.use("/", routes);
 
 // Error catching endware
